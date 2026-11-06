@@ -1,0 +1,838 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eva, an AI phone agent for Australian trades</title>
+<meta name="description" content="Eva rings through your lead list in an Australian voice and saves a callback for anyone who’s keen. Hear her on your own phone with a free demo.">
+<meta name="theme-color" content="#12110f">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="canonical" href="https://heareva.com/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://heareva.com/">
+<meta property="og:title" content="Eva, an AI phone agent for Australian trades">
+<meta property="og:description" content="Eva rings through your lead list and saves a callback for anyone who’s keen. Hear her on your own phone.">
+<meta property="og:image" content="https://heareva.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Service","name":"Eva","serviceType":"AI phone agent for outbound calls to lead lists","url":"https://heareva.com/","areaServed":"AU","provider":{"@type":"Person","name":"Shreyash Wetal","email":"shreyash@heareva.com","jobTitle":"Freelance developer"}}
+</script>
+<style>
+@font-face { font-family: "Instrument Sans"; src: url(assets/fonts/instrument-sans-latin.woff2) format("woff2"); font-weight: 400 700; font-display: swap; }
+@font-face { font-family: "Instrument Serif"; src: url(assets/fonts/instrument-serif-latin.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+:root {
+  --night: #12110f;
+  --night-card: #1c1a18;
+  --night-line: rgba(239, 233, 222, 0.1);
+  --on-night: #efe9de;
+  --on-night-2: #b3ac9f;
+  --on-night-3: #948d81;
+  --paper: #f7f4ee;
+  --card: #fdfbf7;
+  --raised: #efe9df;
+  --ink: #1f1b16;
+  --ink-2: #5e554a;
+  --ink-3: #736a5e;
+  --line: rgba(31, 27, 22, 0.1);
+  --ember: #f0762e;
+  --ember-ink: #ad4410;
+  --sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16px/24px var(--sans); -webkit-font-smoothing: antialiased; }
+h1, h2, h3, p, ol, ul, figure { margin: 0; padding: 0; }
+ol, ul { list-style: none; }
+a { color: inherit; }
+svg { display: block; }
+:focus-visible { outline: 2px solid var(--ember); outline-offset: 2px; border-radius: 4px; }
+.wrap { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: 32px; }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 48px; padding: 0 20px; border-radius: 10px; font: 500 15px/1 var(--sans); text-decoration: none; transition: background-color 160ms var(--ease), border-color 160ms var(--ease), transform 160ms var(--ease); }
+.btn:active { transform: scale(0.98); }
+.btn-ember { background: var(--ember); color: #1a0f07; }
+.btn-ember:hover { background: #f58a4a; }
+.btn-quiet { color: var(--on-night); border: 1px solid rgba(239, 233, 222, 0.2); }
+.btn-quiet:hover { background: rgba(239, 233, 222, 0.08); }
+.btn-sm { height: 36px; padding: 0 16px; font-size: 14px; border-radius: 8px; }
+
+/* Logo */
+.logo { display: inline-flex; align-items: center; gap: 8px; font: 500 18px/1 var(--sans); text-decoration: none; }
+.logo svg { width: 24px; height: 24px; }
+.logo b { font-weight: 600; }
+
+/* Nav */
+.nav { position: absolute; inset: 0 0 auto 0; z-index: 3; color: var(--on-night); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+.nav-links { display: flex; align-items: center; gap: 32px; font-size: 14px; }
+.nav-links a:not(.btn) { color: var(--on-night-2); text-decoration: none; transition: color 160ms var(--ease); }
+.nav-links a:not(.btn):hover { color: var(--on-night); }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; background: var(--night); color: var(--on-night); }
+.hero canvas#ridge { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero-grid { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 64px; min-height: 940px; padding-top: 136px; }
+.hero h1 { font: 400 76px/1.03 var(--serif); letter-spacing: -0.02em; max-width: 640px; }
+.hero-sub { margin-top: 24px; max-width: 36rem; font-size: 20px; line-height: 30px; color: var(--on-night-2); }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.hero-note { margin-top: 16px; font-size: 14px; line-height: 20px; color: var(--on-night-3); }
+
+/* Trade switch */
+.trades { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 32px; font-size: 13px; line-height: 20px; color: var(--on-night-3); }
+.trades span { margin-right: 4px; }
+.trades button { height: 32px; padding: 0 12px; border: 1px solid rgba(239, 233, 222, 0.14); border-radius: 8px; background: none; color: var(--on-night-2); font: 400 13px/1 var(--sans); cursor: pointer; transition: background-color 160ms var(--ease), color 160ms var(--ease), border-color 160ms var(--ease); }
+.trades button:hover { color: var(--on-night); }
+.trades button[aria-pressed="true"] { background: var(--night-card); border-color: rgba(239, 233, 222, 0.28); color: var(--on-night); }
+.voice-note { margin-top: 12px; max-width: 30rem; font-size: 13px; line-height: 20px; color: var(--on-night-3); }
+.btn svg { width: 16px; height: 16px; }
+button.btn { background-color: transparent; cursor: pointer; }
+
+/* Phone */
+.phone { position: relative; align-self: end; width: 340px; height: 690px; margin-bottom: -48px; padding: 10px; border-radius: 48px; background: #2a2723; box-shadow: inset 0 0 0 1px rgba(239, 233, 222, 0.14), 0 32px 64px rgba(0, 0, 0, 0.5); }
+.phone::before { content: ""; position: absolute; right: -2px; top: 148px; width: 3px; height: 72px; border-radius: 0 3px 3px 0; background: #3a3631; }
+.screen { position: relative; display: flex; flex-direction: column; height: 100%; padding: 20px 20px 16px; border-radius: 38px; background: var(--paper); color: var(--ink); overflow: hidden; }
+.speaker { width: 72px; height: 20px; margin: -8px auto 12px; border-radius: 10px; background: #12110f; }
+.call-head { display: flex; align-items: baseline; justify-content: space-between; font-size: 12px; line-height: 16px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.call-name { margin-top: 8px; font: 400 32px/1.1 var(--serif); }
+.call-why { margin-top: 2px; font-size: 14px; line-height: 20px; color: var(--ink-2); }
+#voice { width: 100%; height: 56px; margin-top: 12px; }
+.talk { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.msg { max-width: 88%; padding: 8px 12px; border-radius: 12px; font-size: 13px; line-height: 18px; transition: opacity 300ms var(--ease), transform 300ms var(--ease); }
+.msg.eva { align-self: flex-start; background: var(--raised); }
+.msg.them { align-self: flex-end; background: var(--ink); color: var(--on-night); }
+.msg.wait { opacity: 0; transform: translateY(8px); }
+.saved { display: flex; align-items: center; gap: 12px; margin-top: 12px; padding: 12px; border-radius: 12px; background: var(--card); border: 1px solid var(--line); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); transition: opacity 400ms var(--ease), transform 400ms var(--ease); }
+.saved.wait { opacity: 0; transform: translateY(8px); }
+.saved-dot { flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--ember); color: #1a0f07; }
+.saved-dot svg { width: 16px; height: 16px; }
+.saved strong { display: block; font-size: 14px; line-height: 20px; font-weight: 500; }
+.saved div span { display: block; font-size: 12px; line-height: 16px; color: var(--ink-3); }
+.replay { align-self: center; margin-top: 8px; padding: 4px 8px; border: 0; background: none; font: 400 12px/16px var(--sans); color: var(--ink-3); text-decoration: underline; text-underline-offset: 2px; cursor: pointer; transition: color 160ms var(--ease), opacity 300ms var(--ease); }
+.replay:hover { color: var(--ink); }
+.replay.wait { opacity: 0; pointer-events: none; }
+
+/* Sections */
+section { scroll-margin-top: 24px; }
+.band { padding-block: 112px; }
+.band + .band { padding-top: 0; }
+h2 { font: 400 48px/1.08 var(--serif); letter-spacing: -0.01em; }
+.lede { margin-top: 16px; max-width: 34rem; font-size: 18px; line-height: 28px; color: var(--ink-2); }
+
+/* Ring her */
+.ring { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 64px; align-items: center; }
+.dial { padding: 32px; border-radius: 16px; background: var(--card); border: 1px solid var(--line); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06); }
+.dial-label { font-size: 13px; line-height: 20px; color: var(--ink-3); }
+.dial-number { display: block; margin-top: 4px; font: 400 64px/1.05 var(--serif); letter-spacing: -0.01em; font-variant-numeric: tabular-nums; color: var(--ink); text-decoration: none; white-space: nowrap; }
+.dial-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.btn-ink { background: var(--ink); color: #fdfbf7; }
+.btn-ink:hover { background: #38322a; }
+button.btn-line { border: 1px solid rgba(31, 27, 22, 0.2); color: var(--ink); }
+button.btn-line:hover { background: var(--raised); }
+.hello-bars { display: flex; align-items: center; gap: 2px; height: 32px; margin-top: 24px; }
+.hello-bars i { flex: 1; min-width: 1px; border-radius: 2px; background: var(--ink); opacity: 0.18; transition: background-color 120ms var(--ease), opacity 120ms var(--ease); }
+.hello-bars i.on { background: var(--ember); opacity: 1; }
+.hello-words { margin-top: 12px; font-size: 14px; line-height: 20px; color: var(--ink-2); }
+.dial-note { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 13px; line-height: 20px; color: var(--ink-3); }
+
+/* Steps */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 56px; counter-reset: step; }
+.step { padding-top: 20px; border-top: 1px solid var(--line); counter-increment: step; }
+.step::before { content: counter(step); display: block; font: 400 32px/1 var(--serif); color: var(--ember-ink); }
+.step h3 { margin-top: 16px; font-size: 18px; line-height: 24px; font-weight: 500; }
+.step p { margin-top: 8px; font-size: 15px; line-height: 22px; color: var(--ink-2); }
+
+/* Record */
+.record { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 64px; align-items: center; }
+.sheet { padding: 24px; border-radius: 16px; background: var(--card); border: 1px solid var(--line); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06); }
+.sheet-top { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+.sheet-who { font-size: 18px; line-height: 24px; font-weight: 500; }
+.sheet-meta { font-size: 13px; line-height: 20px; color: var(--ink-3); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.sheet-line { margin-top: 12px; font-size: 15px; line-height: 22px; color: var(--ink-2); }
+.outcome { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; font-size: 14px; line-height: 20px; font-weight: 500; color: var(--ember-ink); }
+.outcome i { width: 8px; height: 8px; border-radius: 50%; background: var(--ember); }
+.bars { display: flex; align-items: center; gap: 2px; height: 48px; margin-top: 20px; }
+.bars i { flex: 1; min-width: 1px; border-radius: 2px; background: var(--ink); opacity: 0.2; }
+.bars i.e { background: var(--ember); opacity: 1; }
+.bars-key { display: flex; gap: 16px; margin-top: 8px; font-size: 12px; line-height: 16px; color: var(--ink-3); }
+.bars-key span { display: inline-flex; align-items: center; gap: 4px; }
+.bars-key i { width: 8px; height: 8px; border-radius: 2px; background: var(--ink); opacity: 0.25; }
+.bars-key i.e { background: var(--ember); opacity: 1; }
+.script { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); display: grid; gap: 8px; font-size: 14px; line-height: 20px; color: var(--ink-2); }
+.script b { font-weight: 500; color: var(--ink); }
+.note { margin-top: 12px; font-size: 12px; line-height: 16px; color: var(--ink-3); }
+.ticks { display: grid; gap: 12px; margin-top: 24px; font-size: 15px; line-height: 22px; }
+.ticks li { display: flex; gap: 8px; }
+.ticks svg { flex: none; width: 16px; height: 22px; color: var(--ink-3); }
+
+/* Rules */
+.rules { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 64px; margin-top: 56px; align-items: start; }
+.hours { padding: 24px; border-radius: 16px; background: var(--night); color: var(--on-night); }
+.hours-title { font-size: 15px; line-height: 22px; font-weight: 500; }
+.hours-sub { font-size: 13px; line-height: 20px; color: var(--on-night-2); }
+.chart { display: grid; gap: 8px; margin-top: 24px; }
+.day { display: grid; grid-template-columns: 40px 1fr 112px; align-items: center; gap: 12px; font-size: 13px; line-height: 20px; font-variant-numeric: tabular-nums; }
+.day-name { color: var(--on-night-2); }
+.track { position: relative; height: 12px; border-radius: 4px; background: var(--night-card); }
+.fill { position: absolute; top: 0; bottom: 0; left: var(--a); right: var(--b); border-radius: 4px; background: var(--ember); }
+.day-time { text-align: right; color: var(--on-night-2); }
+.day.off .day-name, .day.off .day-time { color: var(--on-night-3); }
+.axis { display: grid; grid-template-columns: 40px 1fr 112px; gap: 12px; margin-top: 8px; font-size: 12px; line-height: 16px; color: var(--on-night-3); }
+.axis div { display: flex; justify-content: space-between; grid-column: 2; }
+.hours-foot { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--night-line); font-size: 13px; line-height: 20px; color: var(--on-night-2); }
+.rule { display: grid; grid-template-columns: 18px 1fr; gap: 12px; padding-block: 20px; border-top: 1px solid var(--line); }
+.rule:first-child { border-top: 0; padding-top: 0; }
+.rule svg { width: 18px; height: 24px; color: var(--ink-3); }
+.rule h3 { font-size: 16px; line-height: 24px; font-weight: 500; }
+.rule p { margin-top: 4px; font-size: 15px; line-height: 22px; color: var(--ink-2); }
+
+/* Questions */
+.faq { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 64px; }
+details { border-top: 1px solid var(--line); }
+details:last-child { border-bottom: 1px solid var(--line); }
+summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 20px; font-size: 16px; line-height: 24px; font-weight: 500; cursor: pointer; list-style: none; }
+summary::-webkit-details-marker { display: none; }
+summary svg { flex: none; width: 16px; height: 16px; color: var(--ink-3); transition: transform 180ms var(--ease); }
+details[open] summary svg { transform: rotate(180deg); }
+details p { padding-bottom: 20px; max-width: 40rem; font-size: 15px; line-height: 22px; color: var(--ink-2); }
+
+/* About */
+.about { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 32px; align-items: start; }
+.monogram { display: grid; place-items: center; width: 96px; height: 96px; border-radius: 16px; background: var(--raised); font: 400 40px/1 var(--serif); color: var(--ink-2); }
+.about p { margin-top: 12px; max-width: 36rem; font-size: 18px; line-height: 28px; color: var(--ink-2); }
+
+/* Closing */
+.closing { background: var(--night); color: var(--on-night); }
+.closing .wrap { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 64px; align-items: center; padding-block: 96px; }
+.closing h2 { font-size: 64px; line-height: 1.04; letter-spacing: -0.02em; }
+.closing p { margin-top: 16px; max-width: 32rem; font-size: 18px; line-height: 28px; color: var(--on-night-2); }
+.demo-form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 24px; border-radius: 16px; background: var(--night-card); }
+.field { display: grid; gap: 4px; font-size: 13px; line-height: 20px; color: var(--on-night-2); }
+.field.full, .consent, .form-end, .form-msg { grid-column: 1 / -1; }
+.field input { width: 100%; height: 44px; padding: 0 12px; border: 1px solid rgba(239, 233, 222, 0.16); border-radius: 8px; background: var(--night); color: var(--on-night); font: 400 15px/1 var(--sans); transition: border-color 160ms var(--ease); }
+.field input:hover { border-color: rgba(239, 233, 222, 0.3); }
+.consent { display: grid; grid-template-columns: 16px 1fr; gap: 8px; font-size: 13px; line-height: 20px; color: var(--on-night-2); cursor: pointer; }
+.consent input { width: 16px; height: 16px; margin: 2px 0 0; accent-color: var(--ember); }
+.consent a { color: var(--on-night); }
+.form-end { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+button.btn-ember { background-color: var(--ember); border: 0; }
+button.btn-ember:hover { background-color: #f58a4a; }
+.form-end a { font-size: 13px; line-height: 20px; color: var(--on-night-2); }
+.form-msg { font-size: 14px; line-height: 20px; color: var(--on-night); }
+.form-msg:empty { display: none; }
+.trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+footer { background: var(--night); color: var(--on-night-3); border-top: 1px solid var(--night-line); }
+footer .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-block: 24px; font-size: 13px; line-height: 20px; }
+footer .logo { font-size: 16px; color: var(--on-night); }
+footer a { color: var(--on-night-2); }
+
+@media (max-width: 1000px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 56px; min-height: 0; padding-top: 112px; justify-items: center; }
+  .hero-grid > div:first-child { justify-self: stretch; }
+  .hero h1 { font-size: 56px; }
+  .record, .rules, .faq, .ring, .closing .wrap { grid-template-columns: 1fr; gap: 40px; }
+  .steps { grid-template-columns: 1fr; gap: 24px; margin-top: 40px; }
+  .band { padding-block: 80px; }
+  .closing h2 { font-size: 48px; }
+}
+@media (max-width: 640px) {
+  .wrap { padding-inline: 20px; }
+  .nav-links a:not(.btn) { display: none; }
+  .hero-grid { padding-top: 96px; }
+  .hero h1 { font-size: 44px; line-height: 1.06; }
+  .hero-sub { font-size: 18px; line-height: 28px; }
+  .hero-actions .btn { flex: 1 1 100%; }
+  h2 { font-size: 36px; }
+  .band { padding-block: 64px; }
+  .sheet, .hours, .dial { padding: 20px; }
+  .dial-number { font-size: 44px; }
+  .dial-actions .btn { flex: 1 1 100%; }
+  .day { grid-template-columns: 32px 1fr 88px; gap: 8px; font-size: 12px; }
+  .axis { grid-template-columns: 32px 1fr 88px; gap: 8px; }
+  .sheet-top { flex-direction: column; gap: 0; }
+  .closing .wrap { padding-block: 64px; }
+  .closing h2 { font-size: 40px; }
+  .demo-form { grid-template-columns: 1fr; padding: 20px; }
+  .form-end .btn { width: 100%; }
+  .about { grid-template-columns: 64px minmax(0, 1fr); gap: 20px; }
+  .monogram { width: 64px; height: 64px; border-radius: 12px; font-size: 28px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 32 32">
+    <circle cx="16" cy="16" r="16" fill="#f0762e"/>
+    <g fill="#1a0f07">
+      <rect x="6.5" y="13.5" width="3" height="5" rx="1.5"/>
+      <rect x="11" y="9.5" width="3" height="13" rx="1.5"/>
+      <rect x="15.5" y="6" width="3" height="20" rx="1.5"/>
+      <rect x="20" y="11" width="3" height="10" rx="1.5"/>
+      <rect x="24.5" y="14" width="2.5" height="4" rx="1.25"/>
+    </g>
+  </symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-tick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/></symbol>
+  <symbol id="i-ban" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v3"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l11-6.5a1 1 0 0 0 0-1.72l-11-6.5A1 1 0 0 0 8 5.5Z"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></symbol>
+</svg>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Eva, home">
+      <svg aria-hidden="true"><use href="#mark"/></svg><span>hear<b>eva</b></span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#ring">Ring her</a>
+      <a href="#how">How it works</a>
+      <a href="#record">Call records</a>
+      <a href="#questions">Questions</a>
+      <a class="btn btn-ember btn-sm" href="#demo">Book a free demo</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <canvas id="ridge" aria-hidden="true"></canvas>
+    <div class="wrap hero-grid">
+      <div>
+        <h1>Let Eva ring the leads you haven’t got to</h1>
+        <p class="hero-sub">Eva is an AI phone agent for Australian trade businesses. She works through your lead list in an Australian voice and saves a callback for anyone who’s keen.</p>
+        <div class="hero-actions">
+          <a class="btn btn-ember" href="#demo">Have Eva ring you</a>
+          <button class="btn btn-quiet" id="hear" type="button"><svg aria-hidden="true"><use href="#i-play"/></svg><span id="hear-label">Hear her voice</span></button>
+        </div>
+        <p class="hero-note">A free demo, on your own phone. Nothing to sign.</p>
+        <div class="trades" role="group" aria-label="Choose an example call">
+          <span>Example call for</span>
+          <button type="button" data-trade="plumber" aria-pressed="true">A plumber</button>
+          <button type="button" data-trade="electrician" aria-pressed="false">An electrician</button>
+          <button type="button" data-trade="roofer" aria-pressed="false">A roofer</button>
+        </div>
+        <p class="voice-note">You’ll hear the voice Eva uses on calls, reading a made-up script. The caller’s voice is generated too.</p>
+      </div>
+
+      <figure class="phone" aria-label="An example call: Eva rings someone who asked for a quote, and saves a callback at the time they ask for">
+        <div class="screen">
+          <div class="speaker" aria-hidden="true"></div>
+          <div class="call-head"><span>Example call</span><span id="clock">0:21</span></div>
+          <div class="call-name" id="call-name">Jordan</div>
+          <div class="call-why" id="call-why">Hot water quote</div>
+          <canvas id="voice" aria-hidden="true"></canvas>
+          <div class="talk" id="talk">
+            <p class="msg eva">Hi Jordan, it’s Eva, an AI assistant calling from Harbour Road Plumbing. You asked about a hot water quote. Is now okay?</p>
+            <p class="msg them">I’m on site. Can someone ring me tomorrow?</p>
+            <p class="msg eva">No worries. What time suits?</p>
+            <p class="msg them">Around three.</p>
+            <p class="msg eva">Thanks Jordan, I’ll pass that on. Bye for now.</p>
+          </div>
+          <div class="saved" id="saved">
+            <span class="saved-dot"><svg aria-hidden="true"><use href="#i-check"/></svg></span>
+            <div><strong>Callback saved</strong><span id="saved-when">Tomorrow, 3 pm</span></div>
+          </div>
+          <button class="replay wait" id="replay" type="button">Play with sound</button>
+        </div>
+      </figure>
+    </div>
+  </div>
+
+  <section id="ring" class="band">
+    <div class="wrap ring">
+      <div>
+        <h2>Ring her yourself</h2>
+        <p class="lede">Call the test line and talk to Eva the way one of your leads would. It’s the quickest way to decide if she’s any good.</p>
+      </div>
+      <div class="dial">
+        <div class="dial-label">Eva’s test line</div>
+        <a class="dial-number" href="tel:+61259262408">(02) 5926 2408</a>
+        <div class="dial-actions">
+          <a class="btn btn-ink" href="tel:+61259262408">Call Eva</a>
+          <button class="btn btn-line" id="hello-play" type="button"><svg aria-hidden="true"><use href="#i-play"/></svg><span id="hello-label">Hear her say hello</span></button>
+        </div>
+        <div class="hello-bars" id="hello-bars" aria-hidden="true"></div>
+        <p class="hello-words">“Hi, this is Eva, your AI assistant. I ring through your leads, and I save a callback for anyone who’s keen.”</p>
+        <p class="dial-note">She’s an AI and the call may be recorded. Your normal call rates apply. If she doesn’t pick up, the line is offline, so <a href="#demo">ask for a demo</a> instead.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="band">
+    <div class="wrap">
+      <h2>You stay on the tools. She works the list.</h2>
+      <ol class="steps">
+        <li class="step">
+          <h3>Give her your list</h3>
+          <p>Your leads, your script and the facts she’s allowed to use. Shreyash sets it all up with you.</p>
+        </li>
+        <li class="step">
+          <h3>She rings through it</h3>
+          <p>One call after another, inside Australian calling hours. She says who she is, and a no ends the call.</p>
+        </li>
+        <li class="step">
+          <h3>You ring the keen ones</h3>
+          <p>Anyone interested gets a callback request with the time they asked for. Someone from your team still makes that call.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="record" class="band">
+    <div class="wrap record">
+      <div>
+        <h2>Every call leaves a record</h2>
+        <p class="lede">You can check what she said, not just take her word for it.</p>
+        <ul class="ticks">
+          <li><svg aria-hidden="true"><use href="#i-tick"/></svg>A recording of the call</li>
+          <li><svg aria-hidden="true"><use href="#i-tick"/></svg>A written transcript</li>
+          <li><svg aria-hidden="true"><use href="#i-tick"/></svg>A one-line summary and what happens next</li>
+        </ul>
+      </div>
+      <figure>
+        <div class="sheet">
+          <div class="sheet-top">
+            <div class="sheet-who" id="rec-who">Jordan, hot water quote</div>
+            <div class="sheet-meta" id="rec-meta">Tue 10:42 am, 0:19</div>
+          </div>
+          <p class="sheet-line" id="rec-line">Keen on a quote, busy on site today.</p>
+          <div class="outcome"><i></i><span id="rec-outcome">Callback saved: Tomorrow 3 pm</span></div>
+          <div class="bars" id="bars" aria-hidden="true"></div>
+          <div class="bars-key" aria-hidden="true"><span><i class="e"></i>Eva</span><span><i></i><span id="rec-name">Jordan</span></span></div>
+          <div class="script">
+            <div><b>Eva</b> <span id="rec-q">No worries. What time suits?</span></div>
+            <div><b id="rec-name2">Jordan</b> <span id="rec-a">Around three.</span></div>
+          </div>
+        </div>
+        <figcaption class="note">An example with made-up details, not a real customer.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="rules" class="band">
+    <div class="wrap">
+      <h2>She keeps to the rules</h2>
+      <div class="rules">
+        <figure class="hours">
+          <div class="hours-title">When she’ll ring</div>
+          <div class="hours-sub">Australia’s telemarketing hours</div>
+          <div class="chart" role="img" aria-label="Monday to Friday 9 am to 8 pm. Saturday 9 am to 5 pm. No calls on Sunday.">
+            <div class="day"><span class="day-name">Mon</span><span class="track"><i class="fill" style="--a:18.75%;--b:12.5%"></i></span><span class="day-time">9 am to 8 pm</span></div>
+            <div class="day"><span class="day-name">Tue</span><span class="track"><i class="fill" style="--a:18.75%;--b:12.5%"></i></span><span class="day-time">9 am to 8 pm</span></div>
+            <div class="day"><span class="day-name">Wed</span><span class="track"><i class="fill" style="--a:18.75%;--b:12.5%"></i></span><span class="day-time">9 am to 8 pm</span></div>
+            <div class="day"><span class="day-name">Thu</span><span class="track"><i class="fill" style="--a:18.75%;--b:12.5%"></i></span><span class="day-time">9 am to 8 pm</span></div>
+            <div class="day"><span class="day-name">Fri</span><span class="track"><i class="fill" style="--a:18.75%;--b:12.5%"></i></span><span class="day-time">9 am to 8 pm</span></div>
+            <div class="day"><span class="day-name">Sat</span><span class="track"><i class="fill" style="--a:18.75%;--b:29.17%"></i></span><span class="day-time">9 am to 5 pm</span></div>
+            <div class="day off"><span class="day-name">Sun</span><span class="track"></span><span class="day-time">No calls</span></div>
+          </div>
+          <div class="axis" aria-hidden="true"><div><span>6 am</span><span>12 pm</span><span>6 pm</span><span>10 pm</span></div></div>
+          <div class="hours-foot">No calls on national public holidays either.</div>
+        </figure>
+        <div>
+          <div class="rule">
+            <svg aria-hidden="true"><use href="#i-file"/></svg>
+            <div><h3>Your script and your facts</h3><p>She’s set up to work from what you give her, so she has no prices or promises of her own to offer.</p></div>
+          </div>
+          <div class="rule">
+            <svg aria-hidden="true"><use href="#i-ban"/></svg>
+            <div><h3>Your do-not-call list</h3><p>Someone who asks not to be called goes on the list, and she won’t ring them again.</p></div>
+          </div>
+          <div class="rule">
+            <svg aria-hidden="true"><use href="#i-mic"/></svg>
+            <div><h3>No pretending</h3><p>She’s an AI and she never claims to be a person.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="band">
+    <div class="wrap about">
+      <!-- For a photo: save it as assets/shreyash.jpg (square, at least 192 x 192) and replace this div with
+           <img src="assets/shreyash.jpg" alt="Shreyash Wetal" width="96" height="96" style="border-radius:16px;object-fit:cover"> -->
+      <div class="monogram" aria-hidden="true">SW</div>
+      <div>
+        <h2>One person, start to finish</h2>
+        <p>I’m Shreyash Wetal, a freelance developer. I built Eva and I set her up with you myself, so there’s no agency and no long contract. Just one person to talk to.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="questions" class="band">
+    <div class="wrap faq">
+      <h2>Fair questions</h2>
+      <div>
+        <details open>
+          <summary>What does it cost?<svg aria-hidden="true"><use href="#i-down"/></svg></summary>
+          <p>It depends on how many calls you need and what the setup involves, so it’s worked out with you after the demo. The demo itself is free.</p>
+        </details>
+        <details>
+          <summary>Can she put a keen caller straight through to me?<svg aria-hidden="true"><use href="#i-down"/></svg></summary>
+          <p>Not today. She saves a callback request with the time they asked for, and you ring them back.</p>
+        </details>
+        <details>
+          <summary>Will she ring new leads the minute they come in?<svg aria-hidden="true"><use href="#i-down"/></svg></summary>
+          <p>Not on her own yet. She works from a list you give her, and only during calling hours.</p>
+        </details>
+        <details>
+          <summary>Does she answer my incoming calls?<svg aria-hidden="true"><use href="#i-down"/></svg></summary>
+          <p>She answers the test line on this page, so you can try her. Answering your business’s own calls isn’t part of the offer yet.</p>
+        </details>
+        <details>
+          <summary>Who can she ring?<svg aria-hidden="true"><use href="#i-down"/></svg></summary>
+          <p>People on the list you provide. It’s your list, so the rules on who your business may call still apply to you, including the Do Not Call Register.</p>
+        </details>
+        <details>
+          <summary>Is that really her voice?<svg aria-hidden="true"><use href="#i-down"/></svg></summary>
+          <p>Yes, it’s the voice she uses on calls, reading a made-up script. A phone line sounds rougher than this clip, so the demo call on your own phone is the real test.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing" id="demo">
+    <div class="wrap">
+      <div>
+        <h2>Hear her for yourself</h2>
+        <p>Tell Shreyash the best number and time, and Eva will ring you. That’s the demo.</p>
+      </div>
+      <form class="demo-form" id="demo-form">
+        <label class="field">Your name<input name="name" type="text" autocomplete="name" required></label>
+        <label class="field">Business<input name="business" type="text" autocomplete="organization" required></label>
+        <label class="field">Best number<input name="phone" type="tel" autocomplete="tel" required></label>
+        <label class="field">Best time<input name="time" type="text" placeholder="Weekdays after 4 pm"></label>
+        <label class="trap" aria-hidden="true">Leave this empty<input name="website" type="text" tabindex="-1" autocomplete="off"></label>
+        <label class="consent"><input name="consent" type="checkbox" required><span>Eva can ring this number for the demo. I know she’s an AI and the call may be recorded. See the <a href="privacy.html">privacy page</a>.</span></label>
+        <div class="form-end">
+          <button class="btn btn-ember" type="submit">Have Eva ring you</button>
+          <a href="mailto:shreyash@heareva.com">Or email shreyash@heareva.com</a>
+        </div>
+        <p class="form-msg" id="form-msg" role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="logo"><svg aria-hidden="true"><use href="#mark"/></svg><span>hear<b>eva</b></span></span>
+    <span>Eva is built and run by Shreyash Wetal, freelance developer. &copy; 2026. <a href="privacy.html">Privacy</a></span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var EMBER = '#f0762e';
+  var level = { eva: 0, them: 0 };
+  var target = { eva: 0, them: 0 };
+
+  /* Each example call. secs is the length of its clips in audio/. */
+  var CALLS = {"plumber": {"name": "Jordan", "why": "Hot water quote", "when": "Tomorrow, 3 pm", "saved": "Tomorrow 3 pm", "who": "Jordan, hot water quote", "line": "Keen on a quote, busy on site today.", "stamp": "Tue 10:42 am", "lines": [["eva", "Hi Jordan, it’s Eva, an AI assistant calling from Harbour Road Plumbing. You asked about a hot water quote. Is now okay?"], ["them", "I’m on site. Can someone ring me tomorrow?"], ["eva", "No worries. What time suits?"], ["them", "Around three."], ["eva", "Thanks Jordan, I’ll pass that on. Bye for now."]], "secs": [7.63, 2.59, 2.12, 1.15, 3.16]}, "electrician": {"name": "Mel", "why": "Switchboard upgrade", "when": "Friday, after 4 pm", "saved": "Friday after 4 pm", "who": "Mel, switchboard upgrade", "line": "Wants a switchboard upgrade, free after four.", "stamp": "Wed 1:15 pm", "lines": [["eva", "Hi Mel, it’s Eva, an AI assistant calling from Cedar Lane Electrical. You asked about a switchboard upgrade. Is now okay?"], ["them", "Only quickly. I’m at work until four."], ["eva", "No worries. Should someone ring you after that?"], ["them", "Friday after four is good."], ["eva", "Thanks Mel, I’ll pass that on. Bye for now."]], "secs": [7.89, 2.51, 2.77, 1.49, 3.01]}, "roofer": {"name": "Sam", "why": "Roof leak", "when": "Tomorrow, 8 am", "saved": "Tomorrow 8 am", "who": "Sam, roof leak", "line": "Has a roof leak, wants a morning call.", "stamp": "Thu 11:02 am", "lines": [["eva", "Hi Sam, it’s Eva, an AI assistant calling from Southside Roof Repairs. You asked about a leak in your roof. Is now okay?"], ["them", "Not really. Can they call me in the morning?"], ["eva", "Sure. Around what time?"], ["them", "Eight would be good."], ["eva", "Thanks Sam, I’ll pass that on. Bye for now."]], "secs": [7.89, 2.35, 2.04, 1.07, 3.01]}};
+  var GAP = 400;
+  var trade = new URLSearchParams(location.search).get('trade');
+  if (!CALLS[trade]) trade = 'plumber';
+  function $(id) { return document.getElementById(id); }
+  function callSeconds(c) { return Math.round(c.secs.reduce(function (s, v) { return s + v; }, 0) + 4 * GAP / 1000); }
+  function mmss(s) { return '0:' + (s < 10 ? '0' : '') + s; }
+
+  /* The record's waveform: real proportions of who spoke for how long, same every time. */
+  function drawBars(c) {
+    var bars = $('bars'), seed = 7;
+    function rnd() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+    bars.textContent = '';
+    c.secs.forEach(function (s, n) {
+      var count = Math.max(4, Math.round(s * 5));
+      for (var i = 0; i < count; i++) {
+        var b = document.createElement('i');
+        if (c.lines[n][0] === 'eva') b.className = 'e';
+        var env = Math.sin(Math.PI * (i + 0.5) / count);
+        b.style.height = Math.round(6 + 38 * env * (0.35 + 0.65 * rnd())) + 'px';
+        bars.appendChild(b);
+      }
+    });
+  }
+
+  /* Hero: dusk hills drawn as voice lines. Her line is ember; the caller's is pale. */
+  var ridge = document.getElementById('ridge');
+  var rc = ridge.getContext('2d');
+  var W = 0, H = 0, wide = true;
+  function size(c) {
+    var d = Math.min(2, window.devicePixelRatio || 1);
+    var w = c.clientWidth, h = c.clientHeight;
+    c.width = Math.round(w * d); c.height = Math.round(h * d);
+    c.getContext('2d').setTransform(d, 0, 0, d, 0, 0);
+    return [w, h];
+  }
+  function layout() {
+    var s = size(ridge); W = s[0]; H = s[1]; wide = W > 1000;
+    var small = W < 700;
+    LINES = small ? 14 : 22; EVA_LINE = small ? 5 : 8; THEM_LINE = small ? 9 : 14; STEP = small ? 12 : 8; FRAME = small ? 50 : 33;
+    var v = size(voice); voiceW = v[0]; voiceH = v[1];
+  }
+  var LINES = 22, EVA_LINE = 8, THEM_LINE = 14, STEP = 8, FRAME = 33;
+  function wave(x, n, t) {
+    return Math.sin(x * 0.006 + n * 1.7 + t * 0.12) * 0.5
+      + Math.sin(x * 0.013 + n * 0.6 - t * 0.09) * 0.3
+      + Math.sin(x * 0.031 + n * 2.9 + t * 0.16) * 0.2;
+  }
+  function drawRidge(t) {
+    rc.clearRect(0, 0, W, H);
+    var top = wide ? H * 0.8 : H * 0.66;
+    var centre = wide ? W * 0.72 : W * 0.5;
+    var spread = wide ? W * 0.3 : W * 0.6;
+    /* A low sun, flat, sitting behind the hills. */
+    rc.fillStyle = '#c4551c';
+    rc.beginPath();
+    rc.arc(wide ? W * 0.56 : W * 0.82, top - (wide ? 58 : 44), wide ? 60 : 36, 0, Math.PI * 2);
+    rc.fill();
+    for (var n = 0; n < LINES; n++) {
+      var depth = n / (LINES - 1);
+      var base = top + (H - top + 40) * Math.pow(depth, 1.25);
+      var amp = 16 + 62 * (1 - depth * 0.55);
+      var isEva = n === EVA_LINE, isThem = n === THEM_LINE;
+      var live = isEva ? level.eva : isThem ? level.them : 0;
+      var ridgeLine = new Path2D();
+      for (var x = 0; x <= W + STEP; x += STEP) {
+        var d = (x - centre) / spread;
+        var env = Math.exp(-d * d);
+        var y = base - (0.3 + env) * amp * (0.55 + 0.45 * wave(x, n, t));
+        if (live > 0.01) {
+          var talk = Math.sin(x * 0.11 + t * 9) * Math.sin(x * 0.037 - t * 4);
+          y -= talk * live * 24 * (0.25 + env);
+        }
+        if (x === 0) ridgeLine.moveTo(x, y); else ridgeLine.lineTo(x, y);
+      }
+      var land = new Path2D(ridgeLine);
+      land.lineTo(W + STEP, H + 2);
+      land.lineTo(0, H + 2);
+      land.closePath();
+      rc.fillStyle = '#12110f';
+      rc.fill(land);
+      rc.lineWidth = isEva || isThem ? 1.5 : 1;
+      if (isEva) rc.strokeStyle = EMBER;
+      else if (isThem) rc.strokeStyle = 'rgba(239,233,222,' + (0.4 + 0.5 * level.them).toFixed(3) + ')';
+      else rc.strokeStyle = 'rgba(239,233,222,' + (0.1 + 0.22 * (1 - depth)).toFixed(3) + ')';
+      rc.stroke(ridgeLine);
+    }
+  }
+
+  /* The phone's voice line. */
+  var voice = document.getElementById('voice');
+  var vc = voice.getContext('2d');
+  var voiceW = 0, voiceH = 0;
+  function drawVoice(t) {
+    vc.clearRect(0, 0, voiceW, voiceH);
+    var m = voiceH / 2;
+    var who = level.eva >= level.them ? level.eva : level.them;
+    vc.strokeStyle = level.them > level.eva ? '#1f1b16' : EMBER;
+    vc.lineWidth = 2;
+    vc.lineCap = 'round';
+    for (var x = 2, i = 0; x < voiceW; x += 6, i++) {
+      var e = Math.sin(Math.PI * x / voiceW);
+      var a = (Math.abs(Math.sin(i * 0.7 + t * 7)) * 0.6 + Math.abs(Math.sin(i * 0.23 - t * 4)) * 0.4);
+      var h = 1.5 + who * e * a * (m - 3);
+      vc.beginPath(); vc.moveTo(x, m - h); vc.lineTo(x, m + h); vc.stroke();
+    }
+  }
+
+  /* The call itself. One audio element, so phones keep playing after the first tap. */
+  var saved = $('saved'), replay = $('replay'), clock = $('clock'), talk = $('talk');
+  var player = new Audio();
+  var run = 0, withSound = false, ticker = 0;
+  function pause(ms) { return new Promise(function (ok) { setTimeout(ok, ms); }); }
+  function msgs() { return [].slice.call(talk.querySelectorAll('.msg')); }
+  function setHear(on) {
+    withSound = on;
+    $('hear-label').textContent = on ? 'Stop' : 'Hear her voice';
+    replay.textContent = 'Play with sound';
+  }
+  function showCall(c) {
+    $('call-name').textContent = c.name;
+    $('call-why').textContent = c.why;
+    $('saved-when').textContent = c.when;
+    talk.textContent = '';
+    c.lines.forEach(function (l) {
+      var p = document.createElement('p');
+      p.className = 'msg ' + l[0];
+      p.textContent = l[1];
+      talk.appendChild(p);
+    });
+    clock.textContent = mmss(callSeconds(c));
+    $('rec-who').textContent = c.who;
+    $('rec-meta').textContent = c.stamp + ', ' + mmss(callSeconds(c));
+    $('rec-line').textContent = c.line;
+    $('rec-outcome').textContent = 'Callback saved: ' + c.saved;
+    $('rec-name').textContent = c.name;
+    $('rec-name2').textContent = c.name;
+    $('rec-q').textContent = c.lines[2][1];
+    $('rec-a').textContent = c.lines[3][1];
+    drawBars(c);
+  }
+  function say(n, secs) {
+    return new Promise(function (done) {
+      var over = false;
+      function end() { if (over) return; over = true; player.onended = player.onerror = null; done(); }
+      setTimeout(end, (secs + 2) * 1000);
+      player.onended = end;
+      player.onerror = end;
+      player.src = 'audio/' + trade + '-' + (n + 1) + '.mp3';
+      var p = player.play();
+      if (p && p.catch) p.catch(function () { setTimeout(end, secs * 1000); });
+    });
+  }
+  function settle() {
+    clearInterval(ticker);
+    target.eva = target.them = 0;
+    msgs().forEach(function (m) { m.classList.remove('wait'); });
+    saved.classList.remove('wait');
+    replay.classList.remove('wait');
+    clock.textContent = mmss(callSeconds(CALLS[trade]));
+    setHear(false);
+  }
+  function stopCall() { run++; player.pause(); settle(); }
+  function playCall(sound) {
+    var id = ++run, c = CALLS[trade], list = msgs(), n = 0, started = performance.now();
+    player.pause();
+    clearInterval(ticker);
+    setHear(sound);
+    target.eva = target.them = 0;
+    if (!reduce) {
+      list.forEach(function (m) { m.classList.add('wait'); });
+      saved.classList.add('wait');
+    }
+    replay.classList.add('wait');
+    clock.textContent = mmss(0);
+    ticker = setInterval(function () {
+      clock.textContent = mmss(Math.min(callSeconds(c), Math.floor((performance.now() - started) / 1000)));
+    }, 250);
+    (function next() {
+      if (id !== run) return;
+      if (n >= list.length) { settle(); return; }
+      var who = c.lines[n][0], secs = c.secs[n], m = list[n], i = n;
+      n++;
+      m.classList.remove('wait');
+      target[who] = 1;
+      var spoken = sound ? say(i, secs) : pause(secs * 1000);
+      spoken.then(function () {
+        target[who] = 0;
+        return pause(GAP);
+      }).then(next);
+    })();
+  }
+  $('hear').addEventListener('click', function () {
+    if (withSound) { stopCall(); return; }
+    helloDone();
+    playCall(true);
+    var r = document.querySelector('.phone').getBoundingClientRect();
+    if (r.top < 0 || r.top > innerHeight * 0.6) document.querySelector('.phone').scrollIntoView({ block: 'center' });
+  });
+  replay.addEventListener('click', function () { helloDone(); playCall(true); });
+  [].forEach.call(document.querySelectorAll('.trades button'), function (b) {
+    b.setAttribute('aria-pressed', String(b.dataset.trade === trade));
+    b.addEventListener('click', function () {
+      trade = b.dataset.trade;
+      [].forEach.call(document.querySelectorAll('.trades button'), function (o) { o.setAttribute('aria-pressed', String(o === b)); });
+      run++; player.pause(); clearInterval(ticker); setHear(false);
+      showCall(CALLS[trade]);
+      if (reduce) settle(); else playCall(false);
+    });
+  });
+
+  /* Her hello clip, with bars that follow it. */
+  var hello = new Audio('audio/hello.mp3');
+  hello.preload = 'none';
+  var helloBars = $('hello-bars'), helloSeed = 11;
+  for (var hb = 0; hb < 56; hb++) {
+    helloSeed = (helloSeed * 16807) % 2147483647;
+    var bar = document.createElement('i');
+    bar.style.height = Math.round(4 + 26 * Math.abs(Math.sin(hb * 0.42)) * (0.35 + 0.65 * helloSeed / 2147483647)) + 'px';
+    helloBars.appendChild(bar);
+  }
+  function helloDone() {
+    hello.pause();
+    hello.currentTime = 0;
+    $('hello-label').textContent = 'Hear her say hello';
+    [].forEach.call(helloBars.children, function (b) { b.classList.remove('on'); });
+  }
+  hello.addEventListener('ended', helloDone);
+  hello.addEventListener('timeupdate', function () {
+    var part = hello.duration ? hello.currentTime / hello.duration : 0;
+    [].forEach.call(helloBars.children, function (b, i) { b.classList.toggle('on', i / helloBars.children.length <= part); });
+  });
+  $('hello-play').addEventListener('click', function () {
+    if (!hello.paused) { helloDone(); return; }
+    if (withSound) stopCall();
+    $('hello-label').textContent = 'Stop';
+    var p = hello.play();
+    if (p && p.catch) p.catch(helloDone);
+  });
+
+  /* Demo form. With FORM_ENDPOINT set it posts there; until then it fills in an email to send. */
+  var FORM_ENDPOINT = '';
+  var form = $('demo-form'), formMsg = $('form-msg');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = new FormData(form);
+    if (f.get('website')) return;
+    var text = 'Hi Shreyash,\n\nI\u2019d like Eva to ring me for the demo.\n\nName: ' + f.get('name') + '\nBusiness: ' + f.get('business') +
+      '\nBest number: ' + f.get('phone') + '\nBest time: ' + (f.get('time') || 'Any') +
+      '\n\nEva can ring this number for the demo. I know she\u2019s an AI and the call may be recorded.\n';
+    if (FORM_ENDPOINT) {
+      formMsg.textContent = 'Sending\u2026';
+      fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ name: f.get('name'), business: f.get('business'), phone: f.get('phone'), time: f.get('time'), consent: true }) })
+        .then(function (r) {
+          if (!r.ok) throw new Error('send failed');
+          form.reset();
+          formMsg.textContent = 'Thanks. Shreyash will be in touch to set a time.';
+        }).catch(function () {
+          formMsg.textContent = 'That didn\u2019t send. Please email shreyash@heareva.com instead.';
+        });
+      return;
+    }
+    location.href = 'mailto:shreyash@heareva.com?subject=' + encodeURIComponent('Free demo of Eva') + '&body=' + encodeURIComponent(text);
+    formMsg.textContent = 'Your email app should open with this filled in. Press send. If it doesn\u2019t open, email shreyash@heareva.com.';
+  });
+
+  /* One loop, paused when the hero is off screen. */
+  var visible = true, last = 0, began = false;
+  function frame(now) {
+    requestAnimationFrame(frame);
+    if (!visible || now - last < FRAME) return;
+    last = now;
+    level.eva += (target.eva - level.eva) * 0.14;
+    level.them += (target.them - level.them) * 0.14;
+    var t = now / 1000;
+    drawRidge(t);
+    drawVoice(t);
+  }
+
+  showCall(CALLS[trade]);
+  layout();
+  window.addEventListener('resize', function () { layout(); if (reduce) { drawRidge(0); drawVoice(0); } });
+  if (reduce) {
+    drawRidge(0); drawVoice(0);
+    replay.classList.remove('wait');
+  } else {
+    new IntersectionObserver(function (e) {
+      visible = e[0].isIntersecting;
+      if (visible && !began) { began = true; if (run === 0) playCall(false); }
+    }, { threshold: 0.2 }).observe(document.querySelector('.phone'));
+    requestAnimationFrame(frame);
+  }
+})();
+</script>
+</body>
+</html>
