@@ -50,7 +50,7 @@ ol, ul { list-style: none; }
 a { color: inherit; }
 svg { display: block; }
 :focus-visible { outline: 2px solid var(--ember); outline-offset: 2px; border-radius: 4px; }
-.wrap { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: 32px; }
+.wrap { width: 100%; padding-inline: clamp(32px, 5vw, 96px); }
 
 /* Buttons */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 48px; padding: 0 20px; border-radius: 10px; font: 500 15px/1 var(--sans); text-decoration: none; transition: background-color 160ms var(--ease), border-color 160ms var(--ease), transform 160ms var(--ease); }
@@ -77,7 +77,7 @@ svg { display: block; }
 .hero { position: relative; overflow: hidden; background: var(--night); color: var(--on-night); }
 .hero canvas#ridge { position: absolute; inset: 0; width: 100%; height: 100%; }
 .hero-grid { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 64px; min-height: 940px; padding-top: 136px; }
-.hero h1 { font: 400 76px/1.03 var(--serif); letter-spacing: -0.02em; max-width: 640px; }
+.hero h1 { font: 400 clamp(64px, 5.3vw, 104px)/1.03 var(--serif); letter-spacing: -0.02em; max-width: 9.6em; text-wrap: balance; }
 .hero-sub { margin-top: 24px; max-width: 36rem; font-size: 20px; line-height: 30px; color: var(--on-night-2); }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
 .hero-note { margin-top: 16px; font-size: 14px; line-height: 20px; color: var(--on-night-3); }
