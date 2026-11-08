@@ -2,6 +2,8 @@
 <html lang="en-AU">
 <head>
 <meta charset="utf-8">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-XW9pGkxhHwgy5nZjyOFsKWm/YQWqaMXETjJY2pE+Z48=' 'sha256-fZ89i+DjQn/E40IF8sz327QKKBSMJ6ZZneB1g5WPNHw='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action mailto:">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Eva, an AI phone agent for Australian trades</title>
 <meta name="description" content="Eva rings through your lead list in an Australian voice and saves a callback for anyone who’s keen. Hear her on your own phone with a free demo.">
@@ -507,7 +509,7 @@ footer a { color: var(--on-night-2); }
         <h2>Hear her for yourself</h2>
         <p>Tell Shreyash the best number and time, and Eva will ring you. That’s the demo.</p>
       </div>
-      <form class="demo-form" id="demo-form">
+      <form class="demo-form" id="demo-form" method="post" action="mailto:shreyash@heareva.com" enctype="text/plain">
         <label class="field">Your name<input name="name" type="text" autocomplete="name" required></label>
         <label class="field">Business<input name="business" type="text" autocomplete="organization" required></label>
         <label class="field">Best number<input name="phone" type="tel" autocomplete="tel" required></label>
