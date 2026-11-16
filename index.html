@@ -275,6 +275,22 @@ footer a { color: var(--on-night-2); }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: 0.01ms !important; }
 }
+
+/* Added 17 Nov 2026: feature cards, who she suits, section button */
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 56px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 24px; }
+.card svg { width: 22px; height: 22px; color: var(--ember-ink); }
+.card h3 { margin-top: 14px; font-size: 17px; line-height: 24px; font-weight: 500; }
+.card p { margin-top: 6px; font-size: 15px; line-height: 22px; color: var(--ink-2); }
+.fit { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px; margin-top: 56px; }
+.fit h3 { font-size: 20px; line-height: 28px; font-weight: 500; }
+.fit ul { list-style: none; margin: 16px 0 0; padding: 0; }
+.fit li { display: grid; grid-template-columns: 18px 1fr; gap: 12px; padding-block: 16px; border-top: 1px solid var(--line); font-size: 15px; line-height: 22px; color: var(--ink-2); }
+.fit li svg { width: 18px; height: 22px; color: var(--ink-3); }
+.fit .yes li svg { color: var(--ember-ink); }
+.sec-cta { margin-top: 40px; }
+@media (max-width: 960px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .cards { grid-template-columns: 1fr; gap: 16px; margin-top: 40px; } .fit { grid-template-columns: 1fr; gap: 32px; margin-top: 40px; } }
 </style>
 </head>
 <body>
@@ -308,6 +324,7 @@ footer a { color: var(--on-night-2); }
       <a href="#ring">Ring her</a>
       <a href="#how">How it works</a>
       <a href="#record">Call records</a>
+      <a href="#fit">Who it’s for</a>
       <a href="#questions">Questions</a>
       <a class="btn btn-ember btn-sm" href="#demo">Book a free demo</a>
     </nav>
@@ -320,7 +337,7 @@ footer a { color: var(--on-night-2); }
     <div class="wrap hero-grid">
       <div>
         <h1>Let Eva ring back the enquiries you haven’t got to</h1>
-        <p class="hero-sub">Eva is an AI phone agent for Australian trade businesses. She follows up enquiries and quotes that have gone quiet, in an Australian voice, and saves a callback for anyone who’s keen.</p>
+        <p class="hero-sub">Eva is an AI phone agent for Australian trade businesses. She follows up enquiries and quotes that have gone quiet, in an Australian voice, and saves a callback for anyone who’s keen. She can also run your campaigns and offers.</p>
         <div class="hero-actions">
           <a class="btn btn-ember" href="#demo">Have Eva ring you</a>
           <button class="btn btn-quiet" id="hear" type="button"><svg aria-hidden="true"><use href="#i-play"/></svg><span id="hear-label">Hear her voice</span></button>
@@ -381,7 +398,7 @@ footer a { color: var(--on-night-2); }
 
   <section id="how" class="band">
     <div class="wrap">
-      <h2>You stay on the tools. She works the list.</h2>
+      <h2>Eva follows up. Your team rings back the keen ones.</h2>
       <ol class="steps">
         <li class="step">
           <h3>Give her your enquiries</h3>
@@ -396,6 +413,45 @@ footer a { color: var(--on-night-2); }
           <p>Anyone interested gets a callback request with the time they asked for. Someone from your team still makes that call.</p>
         </li>
       </ol>
+    </div>
+  </section>
+
+  <section id="does" class="band">
+    <div class="wrap">
+      <h2>What Eva does</h2>
+      <p class="lede">She works from your script and your facts, and she says up front that she’s an AI.</p>
+      <div class="cards">
+        <div class="card">
+          <svg aria-hidden="true"><use href="#i-mic"/></svg>
+          <h3>Follows up quiet enquiries and quotes</h3>
+          <p>She rings people who asked your business for a quote or some help and haven’t heard back, in an Australian voice.</p>
+        </div>
+        <div class="card">
+          <svg aria-hidden="true"><use href="#i-file"/></svg>
+          <h3>Runs your campaigns and offers</h3>
+          <p>Got a promotion on? Give her the offer and the facts, and she’ll tell the people who enquired. The offer is yours: she has no prices or discounts of her own.</p>
+        </div>
+        <div class="card">
+          <svg aria-hidden="true"><use href="#i-check"/></svg>
+          <h3>Saves a callback for anyone keen</h3>
+          <p>She notes the time each person asked for, so your team knows who to ring and when.</p>
+        </div>
+        <div class="card">
+          <svg aria-hidden="true"><use href="#i-tick"/></svg>
+          <h3>Records every call</h3>
+          <p>You get the recording, a written transcript and a one-line summary in a dashboard, so you can hear exactly what she said.</p>
+        </div>
+        <div class="card">
+          <svg aria-hidden="true"><use href="#i-ban"/></svg>
+          <h3>Keeps to the rules</h3>
+          <p>Australian calling hours, your do-not-call list, who she’s calling for and why, and she stops when someone says no.</p>
+        </div>
+        <div class="card">
+          <svg aria-hidden="true"><use href="#i-play"/></svg>
+          <h3>Set up with you</h3>
+          <p>Shreyash writes the script and the facts with you and sets Eva up himself. No agency and no long contract.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -471,6 +527,53 @@ footer a { color: var(--on-night-2); }
     </div>
   </section>
 
+  <section id="start" class="band">
+    <div class="wrap">
+      <h2>Try her before you decide</h2>
+      <ol class="steps">
+        <li class="step">
+          <h3>Hear her on your phone</h3>
+          <p>Ask for the free demo and Eva rings you, so you hear exactly how she sounds on a real call.</p>
+        </li>
+        <li class="step">
+          <h3>See her on your own enquiries</h3>
+          <p>If you like what you hear, she works through a small batch of your own recent enquiries, using a script you’ve approved. You can listen to every recording before going any further.</p>
+        </li>
+        <li class="step">
+          <h3>Then you decide</h3>
+          <p>You’ll have the recordings and the callbacks in front of you, and the cost is agreed with you before anything starts.</p>
+        </li>
+      </ol>
+      <p class="sec-cta"><a class="btn btn-ink" href="#demo">Book a free demo</a></p>
+    </div>
+  </section>
+
+  <section id="fit" class="band">
+    <div class="wrap">
+      <h2>Who Eva suits</h2>
+      <div class="fit">
+        <div class="yes">
+          <h3>She’s a good fit if…</h3>
+          <ul>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>You run a trade business, such as plumbing, electrical, roofing, air-conditioning, solar, building or landscaping, and enquiries and quote requests arrive by phone or web form.</span></li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Some of those enquiries go quiet because your team is busy with work already booked.</span></li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>You’d like your team to spend its time with people who are ready to go ahead.</span></li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>You want to hear her, and check the recordings, before you decide.</span></li>
+          </ul>
+        </div>
+        <div class="no">
+          <h3>She isn’t for you if…</h3>
+          <ul>
+            <li><svg aria-hidden="true"><use href="#i-ban"/></svg><span>You need her to answer your incoming calls today. That isn’t part of the standard setup: ask if you’d like it added.</span></li>
+            <li><svg aria-hidden="true"><use href="#i-ban"/></svg><span>You want her to cold call a bought or scraped list. She rings people who have already enquired with your business.</span></li>
+            <li><svg aria-hidden="true"><use href="#i-ban"/></svg><span>You expect guaranteed sales. She follows up enquiries; people still decide for themselves.</span></li>
+            <li><svg aria-hidden="true"><use href="#i-ban"/></svg><span>You need automatic calendar booking, text messages or a CRM sync today. She saves a callback request, and your team rings back.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="about" class="band">
     <div class="wrap about">
       <!-- For a photo: save it as assets/shreyash.jpg (square, at least 192 x 192) and replace this div with
@@ -492,6 +595,22 @@ footer a { color: var(--on-night-2); }
           <p>It depends on how many calls you need and what the setup involves, so it’s worked out with you after the demo. The demo itself is free.</p>
         </details>
         <details>
+          <summary>What if she says something wrong in my business’s name?<svg aria-hidden="true"><use href="#i-down"/></svg></summary>
+          <p>She works only from the script and facts you’ve approved, so she has no prices or promises of her own. Every call is recorded and written up, so you can check exactly what she said.</p>
+        </details>
+        <details>
+          <summary>Can she run a promotion or an offer?<svg aria-hidden="true"><use href="#i-down"/></svg></summary>
+          <p>Yes. Give her the offer and the facts, and she’ll tell the people who enquired about it. The offer is always yours, and she can’t add discounts or promises of her own.</p>
+        </details>
+        <details>
+          <summary>Who looks after her if something goes wrong?<svg aria-hidden="true"><use href="#i-down"/></svg></summary>
+          <p>Shreyash does, personally. There’s no agency or call centre behind him, so ask about support arrangements before you decide.</p>
+        </details>
+        <details>
+          <summary>What happens to my customers’ details?<svg aria-hidden="true"><use href="#i-down"/></svg></summary>
+          <p>The call records (recording, transcript, summary and callback request) are kept in your dashboard. The <a href="privacy.html">privacy page</a> explains what’s collected, why, and which services handle the calls: Twilio, OpenAI and Cartesia.</p>
+        </details>
+        <details>
           <summary>Can she put a keen caller straight through to me?<svg aria-hidden="true"><use href="#i-down"/></svg></summary>
           <p>Not today. She saves a callback request with the time they asked for, and you ring them back.</p>
         </details>
@@ -502,6 +621,10 @@ footer a { color: var(--on-night-2); }
         <details>
           <summary>Does she answer my incoming calls?<svg aria-hidden="true"><use href="#i-down"/></svg></summary>
           <p>Not today. The test line on this page only plays a short recorded hello. Answering your business’s own calls isn’t part of the offer yet.</p>
+        </details>
+        <details>
+          <summary>Can she book jobs into my calendar or send texts?<svg aria-hidden="true"><use href="#i-down"/></svg></summary>
+          <p>Not today. She saves a callback request with the time the person asked for, and your team makes the call.</p>
         </details>
         <details>
           <summary>Who can she ring?<svg aria-hidden="true"><use href="#i-down"/></svg></summary>
@@ -541,7 +664,7 @@ footer a { color: var(--on-night-2); }
 <footer>
   <div class="wrap">
     <span class="logo"><svg aria-hidden="true"><use href="#mark"/></svg><span>hear<b>eva</b></span></span>
-    <span>Eva is built and run by Shreyash Wetal, freelance developer. ABN 11&nbsp;552&nbsp;735&nbsp;418. &copy; 2026. <a href="privacy.html">Privacy</a></span>
+    <span>Eva is built and run by Shreyash Wetal, freelance developer. ABN 11&nbsp;552&nbsp;735&nbsp;418. &copy; 2026. <a href="privacy.html">Privacy</a> &middot; <a href="https://www.linkedin.com/in/shreyash-w-388bb4223/" rel="noopener noreferrer">LinkedIn</a></span>
   </div>
 </footer>
 
