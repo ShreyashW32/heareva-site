@@ -291,6 +291,12 @@ footer a { color: var(--on-night-2); }
 .sec-cta { margin-top: 40px; }
 @media (max-width: 960px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 640px) { .cards { grid-template-columns: 1fr; gap: 16px; margin-top: 40px; } .fit { grid-template-columns: 1fr; gap: 32px; margin-top: 40px; } }
+
+/* Added 17 Nov 2026: trades photo strip */
+.trades { margin: 40px 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.trades img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; background: var(--raised); }
+.trades figcaption { grid-column: 1 / -1; font-size: 13px; line-height: 20px; color: var(--ink-3); }
+@media (max-width: 640px) { .trades { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 32px; } }
 </style>
 </head>
 <body>
@@ -551,6 +557,13 @@ footer a { color: var(--on-night-2); }
   <section id="fit" class="band">
     <div class="wrap">
       <h2>Who Eva suits</h2>
+      <figure class="trades">
+        <img src="assets/trade-electrician.webp" width="800" height="600" loading="lazy" decoding="async" alt="An electrician in insulated gloves measuring voltage inside a switchboard with a multimeter">
+        <img src="assets/trade-roofing.webp" width="800" height="600" loading="lazy" decoding="async" alt="Two roofers working on a tiled roof under a blue sky">
+        <img src="assets/trade-plumber.webp" width="800" height="600" loading="lazy" decoding="async" alt="A plumber in work gloves fitting a pipe to a radiator">
+        <img src="assets/trade-phone.webp" width="800" height="600" loading="lazy" decoding="async" alt="A tradesman in a high-visibility vest talking on his phone outdoors and giving a thumbs up">
+        <figcaption>Stock photos of trades at work. They are not Eva’s customers.</figcaption>
+      </figure>
       <div class="fit">
         <div class="yes">
           <h3>She’s a good fit if…</h3>
