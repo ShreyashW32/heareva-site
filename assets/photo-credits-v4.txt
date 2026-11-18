@@ -12,6 +12,12 @@ photo-solar-1.webp          https://www.pexels.com/photo/solar-technicians-insta
 photo-aircon-1.webp         https://www.pexels.com/photo/man-checking-an-air-conditioner-5463575/
 photo-building-1.webp       https://www.pexels.com/photo/carpenters-building-a-wooden-structure-8820187/
 photo-landscaping-1.webp    https://www.pexels.com/photo/crop-worker-laying-grass-roll-5231236/
-photo-banner-1.webp         https://www.pexels.com/photo/a-house-with-solar-panel-on-the-roof-12243093/
 photo-hero-1.webp           https://www.pexels.com/photo/solar-panels-at-sunset-18316988/
 photo-closing-1.webp        https://www.pexels.com/photo/a-man-working-at-a-construction-site-8830265/
+photo-banner-2.webp         https://www.pexels.com/photo/construction-workers-on-the-building-site-10202865/
+card-followup-1.webp        https://www.pexels.com/photo/woman-engineer-talking-on-phone-8487403/
+card-campaigns-1.webp       https://www.pexels.com/photo/a-people-talking-together-7578877/
+card-callback-1.webp        https://www.pexels.com/photo/smiling-man-talking-on-phone-and-working-on-laptop-23224700/
+card-records-1.webp         https://www.pexels.com/photo/man-talking-on-the-phone-10376216/
+card-rules-1.webp           https://www.pexels.com/photo/professional-man-writing-on-a-clipboard-9903573/
+card-setup-1.webp           https://www.pexels.com/photo/two-people-shaking-hands-8815848/
