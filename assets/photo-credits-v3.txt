@@ -1,0 +1,17 @@
+Photo credits (updated 18 November 2026)
+
+Every photo on the home page is a free stock photo from Pexels, used under the Pexels licence
+(https://www.pexels.com/license/): free to use on a website, no credit required. They were cropped and
+resized. They show people and places not connected with Eva, and the people shown do not endorse her.
+
+trade-electrician-v2.webp   https://www.pexels.com/photo/man-fixing-electric-box-14319099/
+trade-roofing-v2.webp       https://www.pexels.com/photo/low-angle-shot-of-builders-fixing-a-tiled-roof-against-blue-sky-15964928/
+trade-plumber-v2.webp       https://www.pexels.com/photo/professional-plumber-installing-a-radiator-pipe-29226620/
+trade-phone-v2.webp         https://www.pexels.com/photo/smiling-construction-worker-talking-on-phone-outdoors-34670920/
+photo-solar-1.webp          https://www.pexels.com/photo/solar-technicians-installing-solar-panels-6961085/
+photo-aircon-1.webp         https://www.pexels.com/photo/man-checking-an-air-conditioner-5463575/
+photo-building-1.webp       https://www.pexels.com/photo/carpenters-building-a-wooden-structure-8820187/
+photo-landscaping-1.webp    https://www.pexels.com/photo/crop-worker-laying-grass-roll-5231236/
+photo-banner-1.webp         https://www.pexels.com/photo/a-house-with-solar-panel-on-the-roof-12243093/
+photo-hero-1.webp           https://www.pexels.com/photo/solar-panels-at-sunset-18316988/
+photo-closing-1.webp        https://www.pexels.com/photo/a-man-working-at-a-construction-site-8830265/

@@ -297,6 +297,17 @@ footer a { color: var(--on-night-2); }
 .trades img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; background: var(--raised); }
 .trades figcaption { grid-column: 1 / -1; font-size: 13px; line-height: 20px; color: var(--ink-3); }
 @media (max-width: 640px) { .trades { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 32px; } }
+
+/* Added 18 Nov 2026: photo backgrounds, banner, trade tiles */
+.hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(18, 17, 15, 0.72) 0%, rgba(18, 17, 15, 0.42) 40%, rgba(18, 17, 15, 0.9) 100%), url(assets/photo-hero-1.webp) center 35% / cover no-repeat; }
+.closing { position: relative; overflow: hidden; }
+.closing::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(18, 17, 15, 0.88), rgba(18, 17, 15, 0.8)), url(assets/photo-closing-1.webp) center / cover no-repeat; }
+.closing .wrap { position: relative; }
+.banner { margin: 56px 0 0; }
+.banner img { display: block; width: 100%; height: auto; aspect-ratio: 7 / 3; object-fit: cover; border-radius: 16px; background: var(--raised); }
+.tile { position: relative; }
+.tile span { position: absolute; left: 10px; bottom: 10px; padding: 3px 10px; border-radius: 999px; background: rgba(18, 17, 15, 0.74); color: var(--on-night); font-size: 13px; line-height: 20px; }
+@media (max-width: 640px) { .banner { margin-top: 40px; } .banner img { aspect-ratio: 16 / 9; border-radius: 12px; } }
 </style>
 </head>
 <body>
@@ -419,6 +430,7 @@ footer a { color: var(--on-night-2); }
           <p>Anyone interested gets a callback request with the time they asked for. Someone from your team still makes that call.</p>
         </li>
       </ol>
+      <figure class="banner"><img src="assets/photo-banner-1.webp" width="1400" height="600" loading="lazy" decoding="async" alt="Homes on a hillside, one with solar panels on its tiled roof"></figure>
     </div>
   </section>
 
@@ -558,10 +570,14 @@ footer a { color: var(--on-night-2); }
     <div class="wrap">
       <h2>Who Eva suits</h2>
       <figure class="trades">
-        <img src="assets/trade-electrician-v2.webp" width="800" height="600" loading="lazy" decoding="async" alt="An electrician in insulated gloves measuring voltage inside a switchboard with a multimeter">
-        <img src="assets/trade-roofing-v2.webp" width="800" height="600" loading="lazy" decoding="async" alt="Two roofers working on a tiled roof under a blue sky">
-        <img src="assets/trade-plumber-v2.webp" width="800" height="600" loading="lazy" decoding="async" alt="A plumber in work gloves fitting a pipe to a radiator">
-        <img src="assets/trade-phone-v2.webp" width="800" height="600" loading="lazy" decoding="async" alt="A tradesman in a high-visibility vest talking on his phone outdoors and giving a thumbs up">
+        <div class="tile"><img src="assets/photo-solar-1.webp" width="720" height="540" loading="lazy" decoding="async" alt="A crew of solar installers fitting panels to a metal roof"><span>Solar</span></div>
+        <div class="tile"><img src="assets/trade-electrician-v2.webp" width="800" height="600" loading="lazy" decoding="async" alt="An electrician in insulated gloves measuring voltage inside a switchboard with a multimeter"><span>Electrical</span></div>
+        <div class="tile"><img src="assets/trade-roofing-v2.webp" width="800" height="600" loading="lazy" decoding="async" alt="Two roofers working on a tiled roof under a blue sky"><span>Roofing</span></div>
+        <div class="tile"><img src="assets/photo-building-1.webp" width="720" height="540" loading="lazy" decoding="async" alt="Two carpenters building a timber frame"><span>Building</span></div>
+        <div class="tile"><img src="assets/photo-aircon-1.webp" width="720" height="540" loading="lazy" decoding="async" alt="A technician checking gauges on an outdoor air-conditioning unit"><span>Air-conditioning</span></div>
+        <div class="tile"><img src="assets/trade-plumber-v2.webp" width="800" height="600" loading="lazy" decoding="async" alt="A plumber in work gloves fitting a pipe to a radiator"><span>Plumbing</span></div>
+        <div class="tile"><img src="assets/photo-landscaping-1.webp" width="720" height="540" loading="lazy" decoding="async" alt="A landscaper rolling out turf on a lawn"><span>Landscaping</span></div>
+        <div class="tile"><img src="assets/trade-phone-v2.webp" width="800" height="600" loading="lazy" decoding="async" alt="A tradesman in a high-visibility vest talking on his phone outdoors and giving a thumbs up"><span>On the phone</span></div>
       </figure>
       <div class="fit">
         <div class="yes">
