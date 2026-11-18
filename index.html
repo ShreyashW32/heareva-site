@@ -342,6 +342,34 @@ footer a { color: var(--on-night-2); }
 .plans-foot { margin-top: 24px; font-size: 14px; line-height: 20px; color: var(--ink-3); }
 @media (max-width: 900px) { .plans { grid-template-columns: 1fr; } }
 @media (max-width: 640px) { .plans { margin-top: 40px; } .plan { padding: 24px; } .plan h3 { font-size: 28px; } }
+
+/* Added 18 Nov 2026: example callback list under How it works (replaces the banner photo) */
+.cb { margin: 56px 0 0; }
+.cb-sheet { padding: 8px 24px 20px; border-radius: 16px; background: var(--card); border: 1px solid var(--line); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06); }
+.cb-top { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.cb-title { font: 400 28px/1.15 var(--serif); }
+.cb-meta { font-size: 13px; line-height: 20px; color: var(--ink-3); }
+.cb-head, .cb-row { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr) minmax(0, 0.8fr); gap: 24px; align-items: center; }
+.cb-head { padding: 12px 0 8px; font-size: 13px; line-height: 20px; color: var(--ink-3); }
+.cb-list { list-style: none; margin: 0; padding: 0; }
+.cb-row { padding: 16px 0; border-top: 1px solid var(--line); }
+.cb-who { display: grid; grid-template-columns: 8px 1fr; gap: 12px; align-items: start; }
+.cb-who i { width: 8px; height: 8px; margin-top: 8px; border-radius: 50%; background: var(--ember); }
+.cb-who span { font-size: 14px; line-height: 20px; color: var(--ink-2); }
+.cb-who b { display: block; font-size: 16px; line-height: 24px; font-weight: 500; color: var(--ink); }
+.cb-said { font-size: 15px; line-height: 22px; color: var(--ink); }
+.cb-time { justify-self: start; padding: 4px 12px; border-radius: 8px; background: var(--raised); font-size: 14px; line-height: 20px; font-weight: 500; color: var(--ember-ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cb-foot { margin-top: 4px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 14px; line-height: 20px; color: var(--ink-3); }
+@media (max-width: 760px) {
+  .cb { margin-top: 40px; }
+  .cb-sheet { padding: 4px 16px 16px; }
+  .cb-top { flex-direction: column; gap: 4px; }
+  .cb-title { font-size: 24px; }
+  .cb-head { display: none; }
+  .cb-row { grid-template-columns: 1fr; gap: 8px; }
+  .cb-said { padding-left: 20px; }
+  .cb-time { margin-left: 20px; }
+}
 </style>
 </head>
 <body>
@@ -464,7 +492,39 @@ footer a { color: var(--on-night-2); }
           <p>Anyone interested gets a callback request with the time they asked for. Someone from your team still makes that call.</p>
         </li>
       </ol>
-      <figure class="banner"><img src="assets/photo-banner-3.webp" width="1400" height="600" loading="lazy" decoding="async" alt="A tradesman taking a phone call beside his truck"></figure>
+      <figure class="cb">
+        <div class="cb-sheet">
+          <div class="cb-top">
+            <div class="cb-title">Callbacks for your team</div>
+            <div class="cb-meta">After one round of calls</div>
+          </div>
+          <div class="cb-head" aria-hidden="true"><span>Who</span><span>What they said</span><span>Time they asked for</span></div>
+          <ol class="cb-list">
+            <li class="cb-row">
+              <div class="cb-who"><i aria-hidden="true"></i><span><b>Priya</b>Solar quote, 6.6 kW</span></div>
+              <div class="cb-said">Wants the price with a battery added</div>
+              <div class="cb-time">Today, 4:30 pm</div>
+            </li>
+            <li class="cb-row">
+              <div class="cb-who"><i aria-hidden="true"></i><span><b>Mark</b>Hot water replacement</span></div>
+              <div class="cb-said">Ready to go ahead, needs a date</div>
+              <div class="cb-time">Tomorrow, 9 am</div>
+            </li>
+            <li class="cb-row">
+              <div class="cb-who"><i aria-hidden="true"></i><span><b>Leanne</b>Roof restoration</span></div>
+              <div class="cb-said">Comparing two quotes, open to a chat</div>
+              <div class="cb-time">Thursday, after 3 pm</div>
+            </li>
+            <li class="cb-row">
+              <div class="cb-who"><i aria-hidden="true"></i><span><b>Dev</b>Switchboard upgrade</span></div>
+              <div class="cb-said">Asked if you work Saturdays</div>
+              <div class="cb-time">Saturday morning</div>
+            </li>
+          </ol>
+          <p class="cb-foot">Anyone who wasn’t keen, or asked not to be called again, is noted and won’t hear from her again.</p>
+        </div>
+        <figcaption class="note">An example with made-up details, not real customers.</figcaption>
+      </figure>
     </div>
   </section>
 

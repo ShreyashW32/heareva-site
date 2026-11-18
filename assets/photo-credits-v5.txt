@@ -14,7 +14,6 @@ photo-building-1.webp       https://www.pexels.com/photo/carpenters-building-a-w
 photo-landscaping-1.webp    https://www.pexels.com/photo/crop-worker-laying-grass-roll-5231236/
 photo-hero-1.webp           https://www.pexels.com/photo/solar-panels-at-sunset-18316988/
 photo-closing-1.webp        https://www.pexels.com/photo/a-man-working-at-a-construction-site-8830265/
-photo-banner-3.webp         https://www.pexels.com/photo/man-in-green-coat-talking-on-the-mobile-phone-beside-blue-truck-6720543/
 card-followup-1.webp        https://www.pexels.com/photo/woman-engineer-talking-on-phone-8487403/
 card-campaigns-1.webp       https://www.pexels.com/photo/a-people-talking-together-7578877/
 card-callback-1.webp        https://www.pexels.com/photo/smiling-man-talking-on-phone-and-working-on-laptop-23224700/
