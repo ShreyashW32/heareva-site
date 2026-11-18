@@ -278,10 +278,10 @@ footer a { color: var(--on-night-2); }
 
 /* Added 17 Nov 2026: feature cards, who she suits, section button */
 .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 56px; }
-.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 24px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 24px; }
 .card svg { width: 22px; height: 22px; color: var(--ember-ink); }
-.card h3 { margin-top: 14px; font-size: 17px; line-height: 24px; font-weight: 500; }
-.card p { margin-top: 6px; font-size: 15px; line-height: 22px; color: var(--ink-2); }
+.card h3 { margin-top: 16px; font-size: 17px; line-height: 24px; font-weight: 500; }
+.card p { margin-top: 8px; font-size: 15px; line-height: 22px; color: var(--ink-2); }
 .fit { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px; margin-top: 56px; }
 .fit h3 { font-size: 20px; line-height: 28px; font-weight: 500; }
 .fit ul { list-style: none; margin: 16px 0 0; padding: 0; }
@@ -293,10 +293,9 @@ footer a { color: var(--on-night-2); }
 @media (max-width: 640px) { .cards { grid-template-columns: 1fr; gap: 16px; margin-top: 40px; } .fit { grid-template-columns: 1fr; gap: 32px; margin-top: 40px; } }
 
 /* Added 17 Nov 2026: trades photo strip */
-.trades { margin: 40px 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
-.trades img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; background: var(--raised); }
-.trades figcaption { grid-column: 1 / -1; font-size: 13px; line-height: 20px; color: var(--ink-3); }
-@media (max-width: 640px) { .trades { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 32px; } }
+.trade-grid { margin: 40px 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.trade-grid img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; background: var(--paper); }
+@media (max-width: 640px) { .trade-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 32px; } }
 
 /* Added 18 Nov 2026: photo backgrounds, banner, trade tiles */
 .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(18, 17, 15, 0.72) 0%, rgba(18, 17, 15, 0.42) 40%, rgba(18, 17, 15, 0.9) 100%), url(assets/photo-hero-1.webp) center 35% / cover no-repeat; }
@@ -306,12 +305,19 @@ footer a { color: var(--on-night-2); }
 .banner { margin: 56px 0 0; }
 .banner img { display: block; width: 100%; height: auto; aspect-ratio: 7 / 3; object-fit: cover; border-radius: 16px; background: var(--raised); }
 .tile { position: relative; }
-.tile span { position: absolute; left: 10px; bottom: 10px; padding: 3px 10px; border-radius: 999px; background: rgba(18, 17, 15, 0.74); color: var(--on-night); font-size: 13px; line-height: 20px; }
+.tile span { position: absolute; left: 12px; bottom: 12px; padding: 4px 12px; border-radius: 999px; background: rgba(18, 17, 15, 0.74); color: var(--on-night); font-size: 13px; line-height: 20px; }
 @media (max-width: 640px) { .banner { margin-top: 40px; } .banner img { aspect-ratio: 16 / 9; border-radius: 12px; } }
 
 /* Added 18 Nov 2026: photos on the feature cards */
 .card { overflow: hidden; }
-.card-img { display: block; width: calc(100% + 48px); max-width: none; height: auto; aspect-ratio: 16 / 10; object-fit: cover; margin: -24px -24px 18px; background: var(--raised); }
+.card-img { display: block; width: calc(100% + 48px); max-width: none; height: auto; aspect-ratio: 16 / 10; object-fit: cover; margin: -24px -24px 0; background: var(--raised); }
+
+/* Added 18 Nov 2026 polish: tinted bands, the need list */
+.band.tint { background: var(--raised); padding-block: 112px; }
+.band.tint + .band { padding-top: 112px; }
+.fit .need li svg { color: var(--ink-3); }
+@media (max-width: 1000px) { .band.tint { padding-block: 80px; } .band.tint + .band { padding-top: 80px; } }
+@media (max-width: 640px) { .band.tint { padding-block: 64px; } .band.tint + .band { padding-top: 64px; } }
 </style>
 </head>
 <body>
@@ -419,7 +425,7 @@ footer a { color: var(--on-night-2); }
 
   <section id="how" class="band">
     <div class="wrap">
-      <h2>Eva follows up. Your team rings back the keen ones.</h2>
+      <h2>Eva follows up, your team rings back the keen ones</h2>
       <ol class="steps">
         <li class="step">
           <h3>Give her your enquiries</h3>
@@ -438,44 +444,38 @@ footer a { color: var(--on-night-2); }
     </div>
   </section>
 
-  <section id="does" class="band">
+  <section id="does" class="band tint">
     <div class="wrap">
       <h2>What Eva does</h2>
       <p class="lede">She works from your script and your facts, and she says up front that she’s an AI.</p>
       <div class="cards">
         <div class="card">
           <img class="card-img" src="assets/card-followup-1.webp" width="640" height="400" loading="lazy" decoding="async" alt="A site worker in a high-visibility vest talking on her phone">
-          <svg aria-hidden="true"><use href="#i-mic"/></svg>
           <h3>Follows up quiet enquiries and quotes</h3>
           <p>She rings people who asked your business for a quote or some help and haven’t heard back, in an Australian voice.</p>
         </div>
         <div class="card">
           <img class="card-img" src="assets/card-campaigns-1.webp" width="640" height="400" loading="lazy" decoding="async" alt="Three people talking outside a house">
-          <svg aria-hidden="true"><use href="#i-file"/></svg>
           <h3>Runs your campaigns and offers</h3>
           <p>Got a promotion on? Give her the offer and the facts, and she’ll tell the people who enquired. The offer is yours: she has no prices or discounts of her own.</p>
         </div>
         <div class="card">
           <img class="card-img" src="assets/card-callback-1.webp" width="640" height="400" loading="lazy" decoding="async" alt="A man smiling on a phone call at his laptop">
-          <svg aria-hidden="true"><use href="#i-check"/></svg>
           <h3>Saves a callback for anyone keen</h3>
           <p>She notes the time each person asked for, so your team knows who to ring and when.</p>
         </div>
         <div class="card">
           <img class="card-img" src="assets/card-records-1.webp" width="640" height="400" loading="lazy" decoding="async" alt="A man on a phone call at his laptop in an office">
-          <svg aria-hidden="true"><use href="#i-tick"/></svg>
           <h3>Records every call</h3>
           <p>You get the recording, a written transcript and a one-line summary in a dashboard, so you can hear exactly what she said.</p>
         </div>
         <div class="card">
           <img class="card-img" src="assets/card-rules-1.webp" width="640" height="400" loading="lazy" decoding="async" alt="A man filling in a form at a desk">
-          <svg aria-hidden="true"><use href="#i-ban"/></svg>
           <h3>Keeps to the rules</h3>
           <p>Australian calling hours, your do-not-call list, who she’s calling for and why, and she stops when someone says no.</p>
         </div>
         <div class="card">
           <img class="card-img" src="assets/card-setup-1.webp" width="640" height="400" loading="lazy" decoding="async" alt="Two people shaking hands across a desk">
-          <svg aria-hidden="true"><use href="#i-play"/></svg>
           <h3>Set up with you</h3>
           <p>Shreyash writes the script and the facts with you and sets Eva up himself. No agency and no long contract.</p>
         </div>
@@ -576,10 +576,10 @@ footer a { color: var(--on-night-2); }
     </div>
   </section>
 
-  <section id="fit" class="band">
+  <section id="fit" class="band tint">
     <div class="wrap">
       <h2>Who Eva suits</h2>
-      <figure class="trades">
+      <figure class="trade-grid">
         <div class="tile"><img src="assets/photo-solar-1.webp" width="720" height="540" loading="lazy" decoding="async" alt="A crew of solar installers fitting panels to a metal roof"><span>Solar</span></div>
         <div class="tile"><img src="assets/trade-electrician-v2.webp" width="800" height="600" loading="lazy" decoding="async" alt="An electrician in insulated gloves measuring voltage inside a switchboard with a multimeter"><span>Electrical</span></div>
         <div class="tile"><img src="assets/trade-roofing-v2.webp" width="800" height="600" loading="lazy" decoding="async" alt="Two roofers working on a tiled roof under a blue sky"><span>Roofing</span></div>
@@ -601,11 +601,13 @@ footer a { color: var(--on-night-2); }
             <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>You’d like automatic calendar booking, text messages or a CRM sync. She doesn’t do these today. They can be added later, so tell Shreyash what you need.</span></li>
           </ul>
         </div>
-        <div class="no">
-          <h3>She isn’t for you if…</h3>
+        <div class="need">
+          <h3>What you’ll need to start</h3>
           <ul>
-            <li><svg aria-hidden="true"><use href="#i-ban"/></svg><span>You want her to cold call a bought or scraped list. She rings people who have already enquired with your business.</span></li>
-            <li><svg aria-hidden="true"><use href="#i-ban"/></svg><span>You expect guaranteed sales. She follows up enquiries; people still decide for themselves.</span></li>
+            <li><svg aria-hidden="true"><use href="#i-file"/></svg><span>A list of recent enquiries: names, numbers and what each person asked about.</span></li>
+            <li><svg aria-hidden="true"><use href="#i-file"/></svg><span>The facts she can use, such as your services, the areas you cover and any offer you’re running.</span></li>
+            <li><svg aria-hidden="true"><use href="#i-file"/></svg><span>The days and times you’d like her to call, inside Australian calling hours.</span></li>
+            <li><svg aria-hidden="true"><use href="#i-file"/></svg><span>Someone on your team to ring back the people who are keen.</span></li>
           </ul>
         </div>
       </div>
