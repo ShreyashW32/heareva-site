@@ -318,6 +318,30 @@ footer a { color: var(--on-night-2); }
 .fit .need li svg { color: var(--ink-3); }
 @media (max-width: 1000px) { .band.tint { padding-block: 80px; } .band.tint + .band { padding-top: 80px; } }
 @media (max-width: 640px) { .band.tint { padding-block: 64px; } .band.tint + .band { padding-top: 64px; } }
+
+/* Added 18 Nov 2026: two ways to use Eva */
+.plans { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 56px; align-items: stretch; }
+.plan { display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 32px; }
+.plan.lead { border-color: var(--ember); }
+.plan-tag { align-self: flex-start; padding: 4px 12px; border-radius: 8px; background: var(--raised); color: var(--ink-2); font-size: 13px; line-height: 20px; }
+.plan.lead .plan-tag { background: var(--ember); color: #1a0f07; }
+.plan h3 { margin-top: 16px; font: 400 32px/1.1 var(--serif); }
+.plan-sub { margin-top: 12px; font-size: 15px; line-height: 22px; color: var(--ink-2); }
+.flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 24px; padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
+.flow span { padding: 4px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); font-size: 13px; line-height: 20px; color: var(--ink); }
+.flow i { font-style: normal; font-size: 13px; color: var(--ink-3); }
+.plan-label { margin-top: 24px; font-size: 13px; line-height: 20px; color: var(--ink-3); }
+.plan ul { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 12px; }
+.plan li { display: grid; grid-template-columns: 16px 1fr; gap: 12px; font-size: 15px; line-height: 22px; color: var(--ink); }
+.plan li svg { width: 16px; height: 22px; color: var(--ember-ink); }
+.plan:not(.lead) li svg { color: var(--ink-3); }
+.plan-note { margin-top: 16px; font-size: 14px; line-height: 20px; color: var(--ink-2); }
+.plan-cta { margin-top: auto; padding-top: 32px; }
+.plan-cta .btn-line { border: 1px solid rgba(31, 27, 22, 0.2); color: var(--ink); }
+.plan-cta .btn-line:hover { background: var(--raised); }
+.plans-foot { margin-top: 24px; font-size: 14px; line-height: 20px; color: var(--ink-3); }
+@media (max-width: 900px) { .plans { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .plans { margin-top: 40px; } .plan { padding: 24px; } .plan h3 { font-size: 28px; } }
 </style>
 </head>
 <body>
@@ -552,6 +576,48 @@ footer a { color: var(--on-night-2); }
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section id="plans" class="band">
+    <div class="wrap">
+      <h2>Two ways to use Eva</h2>
+      <p class="lede">Start with follow-up, and add more for your business when you need it.</p>
+      <div class="plans">
+        <article class="plan lead">
+          <p class="plan-tag">Where most businesses start</p>
+          <h3>Enquiry follow-up</h3>
+          <p class="plan-sub">Eva rings the enquiries and quotes that have gone quiet, finds out who’s keen and lines them up for your team.</p>
+          <p class="flow" aria-label="How a lead moves"><span>Enquiry</span><i aria-hidden="true">→</i><span>Eva rings</span><i aria-hidden="true">→</i><span>Keen</span><i aria-hidden="true">→</i><span>Callback saved</span><i aria-hidden="true">→</i><span>Your team rings back</span></p>
+          <p class="plan-label">Included</p>
+          <ul>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Follows up recent enquiries and quotes</span></li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Runs your campaigns and offers</span></li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Saves a callback with the time each person asked for</span></li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Recording, transcript and summary of every call</span></li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Australian calling hours and your do-not-call list</span></li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Script and facts set up with you by Shreyash</span></li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>A free demo call, then a small trial on your own enquiries</span></li>
+          </ul>
+          <p class="plan-cta"><a class="btn btn-ember" href="#demo">Book a free demo</a></p>
+        </article>
+        <article class="plan">
+          <p class="plan-tag">Built for your business</p>
+          <h3>Follow-up plus</h3>
+          <p class="plan-sub">Everything in Enquiry follow-up, plus the parts your business needs, added and tested with you.</p>
+          <p class="flow" aria-label="How a lead moves"><span>Enquiry or call</span><i aria-hidden="true">→</i><span>Eva answers or rings</span><i aria-hidden="true">→</i><span>Keen</span><i aria-hidden="true">→</i><span>Booked or callback</span><i aria-hidden="true">→</i><span>Your team</span></p>
+          <p class="plan-label">Can be added on request</p>
+          <ul>
+            <li><svg aria-hidden="true"><use href="#i-file"/></svg><span>Answering your incoming calls</span></li>
+            <li><svg aria-hidden="true"><use href="#i-file"/></svg><span>Booking straight into your calendar</span></li>
+            <li><svg aria-hidden="true"><use href="#i-file"/></svg><span>Text message follow-up</span></li>
+            <li><svg aria-hidden="true"><use href="#i-file"/></svg><span>Syncing calls and callbacks to your CRM</span></li>
+          </ul>
+          <p class="plan-note">These aren’t part of the standard setup today. Tell Shreyash what you need and he’ll say plainly what’s possible.</p>
+          <p class="plan-cta"><a class="btn btn-line" href="#demo">Ask about adding these</a></p>
+        </article>
+      </div>
+      <p class="plans-foot">There’s no price list yet. The cost is worked out with you after the demo, based on how many calls you need.</p>
     </div>
   </section>
 
